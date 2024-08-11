@@ -1,16 +1,40 @@
-import React from "react";
+import React, { useState } from "react";
 import logo_littlelemon from "../images/logo_little-lemon.png";
 const Nav = () => {
-    return(
-        <nav>
-            <img src={logo_littlelemon} alt="Logo Little Lemon" />
-            <ul>
-                <li><a>Home</a></li>
-                <li><a>About</a></li>
-                <li><a>Menu</a></li>
-                <li><a>Reservation</a></li>
-                <li><a>Order Online</a></li>
-                <li><a>Login</a></li>
+    const [menuOpen, setMenuOpen] = useState(false);
+
+    const toggleMenu = () => {
+        setMenuOpen(!menuOpen);
+    }
+    return (
+        <nav className={`navbar ${menuOpen ? "open" : ""}`}>
+            <a href="/" className="logo">
+                <img src={logo_littlelemon} width="148" height="40" alt="Logo Little Lemon" />
+            </a>
+            <div className="menu-icon" onClick={toggleMenu}>
+                <div className="bar"></div>
+                <div className="bar"></div>
+                <div className="bar"></div>
+            </div>
+            <ul className={`nav-links ${menuOpen ? "visible" : ""}`}>
+                <li>
+                    <a href="/">Home</a>
+                </li>
+                <li>
+                    <a href="/">About</a>
+                </li>
+                <li>
+                    <a href="/">Menu</a>
+                </li>
+                <li>
+                    <a href="/">Reservation</a>
+                </li>
+                <li>
+                    <a href="/">Order Online</a>
+                </li>
+                <li>
+                    <a href="/">Login</a>
+                </li>
             </ul>
         </nav>
     );
